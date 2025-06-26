@@ -1,0 +1,22 @@
+from helpers.script_generator import generate_script_and_prompts
+from helpers.image_generator import generate_images
+from helpers.voiceover_generator import generate_voiceover
+from helpers.video_editor import create_final_video
+
+def main():
+    print("🔁 Generating script and prompts...")
+    script, prompts, voiceover_texts = generate_script_and_prompts()
+
+    print("🖼️ Generating images...")
+    image_paths = generate_images(prompts)
+
+    print("🗣️ Generating voiceover...")
+    audio_path, timestamps = generate_voiceover(voiceover_texts)
+
+    print("🎬 Making video...")
+    create_final_video(image_paths, audio_path, timestamps)
+
+    print("✅ Video created!")
+
+if __name__ == "__main__":
+    main()
